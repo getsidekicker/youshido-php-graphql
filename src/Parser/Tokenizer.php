@@ -179,14 +179,17 @@ class Tokenizer
         $start = $this->pos;
         $this->pos++;
 
+
+        $charCount = 0;
         while ($this->pos < strlen($this->source)) {
             $ch = $this->source[$this->pos];
 
-            if ($ch === '_' || $ch === '$' || ('a' <= $ch && $ch <= 'z') || ('A' <= $ch && $ch <= 'Z') || ('0' <= $ch && $ch <= '9')) {
+            if ($ch === '_' || (($ch === '$') && ($charCount === 0)) || ('a' <= $ch && $ch <= 'z') || ('A' <= $ch && $ch <= 'Z') || ('0' <= $ch && $ch <= '9')) {
                 $this->pos++;
             } else {
                 break;
             }
+            $charCount += 1;
         }
 
         $value = substr($this->source, $start, $this->pos - $start);
