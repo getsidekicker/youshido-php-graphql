@@ -24,16 +24,16 @@ class Variable extends AbstractAst implements ValueInterface
     private $type;
 
     /** @var bool */
-    private $nullable = false;
+    private $nullable;
 
     /** @var bool */
-    private $isArray = false;
+    private $isArray;
 
     /** @var bool */
     private $used = false;
 
     /** @var bool */
-    private $arrayElementNullable = true;
+    private $arrayElementNullable;
 
     /** @var bool */
     private $hasDefaultValue = false;
@@ -47,9 +47,8 @@ class Variable extends AbstractAst implements ValueInterface
      * @param bool     $nullable
      * @param bool     $isArray
      * @param bool     $arrayElementNullable
-     * @param Location $location
      */
-    public function __construct($name, $type, $nullable, $isArray, $arrayElementNullable = true, Location $location)
+    public function __construct($name, $type, $nullable, $isArray, $arrayElementNullable, Location $location)
     {
         parent::__construct($location);
 
